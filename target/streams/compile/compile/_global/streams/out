@@ -1,0 +1,84 @@
+[0m[[0m[31merror[0m] [0m[0m/Users/Dimitris/git-repos/trip-pure-functional-service/src/main/scala/utils/json/CirceJsonCodecs.scala:12:40: Symbol 'type cats.effect.ContextShift' is missing from the classpath.[0m
+[0m[[0m[31merror[0m] [0m[0mThis symbol is required by 'value doobie.free.Instances.ContextShiftStatementIO'.[0m
+[0m[[0m[31merror[0m] [0m[0mMake sure that type ContextShift is in your classpath and check for conflicting dependencies with `-Ylog-classpath`.[0m
+[0m[[0m[31merror[0m] [0m[0mA full rebuild may help if 'Instances.class' was compiled against an incompatible version of cats.effect.[0m
+[0m[[0m[31merror[0m] [0m[0m  implicit val vehicleEncoder: Encoder[Vehicle.Value] = Encoder.enumEncoder(Vehicle)[0m
+[0m[[0m[31merror[0m] [0m[0m                                       ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/Dimitris/git-repos/trip-pure-functional-service/src/main/scala/repository/DoobieTripRepository.scala:42:50: Symbol 'type cats.effect.Bracket' is missing from the classpath.[0m
+[0m[[0m[31merror[0m] [0m[0mThis symbol is required by 'value doobie.syntax.ConnectionIOOps.ev'.[0m
+[0m[[0m[31merror[0m] [0m[0mMake sure that type Bracket is in your classpath and check for conflicting dependencies with `-Ylog-classpath`.[0m
+[0m[[0m[31merror[0m] [0m[0mA full rebuild may help if 'ConnectionIOOps.class' was compiled against an incompatible version of cats.effect.[0m
+[0m[[0m[31merror[0m] [0m[0m    sql"DELETE FROM trips WHERE id = $id".update.run.transact(xa)[0m
+[0m[[0m[31merror[0m] [0m[0m                                                 ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/Dimitris/git-repos/trip-pure-functional-service/src/main/scala/repository/DoobieTripRepository.scala:46:7: type mismatch;[0m
+[0m[[0m[31merror[0m] [0m[0m found   : Option[java.time.LocalDate][0m
+[0m[[0m[31merror[0m] [0m[0m required: doobie.syntax.SqlInterpolator.SingleFragment; incompatible interpolation method fr[0m
+[0m[[0m[31merror[0m] [0m[0m      fr"(${row.id}, ${row.city}, ${row.vehicle}, ${row.price}, ${row.completed}, ${row.distance}, ${row.endDate})"[0m
+[0m[[0m[31merror[0m] [0m[0m      ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/Dimitris/git-repos/trip-pure-functional-service/src/main/scala/repository/DoobieTripRepository.scala:57:7: type mismatch;[0m
+[0m[[0m[31merror[0m] [0m[0m found   : Option[java.time.LocalDate][0m
+[0m[[0m[31merror[0m] [0m[0m required: doobie.syntax.SqlInterpolator.SingleFragment; incompatible interpolation method fr[0m
+[0m[[0m[31merror[0m] [0m[0m      fr"VALUES (${row.id}, ${row.city}, ${row.vehicle}, ${row.price}, ${row.completed}, ${row.distance}, ${row.endDate})"[0m
+[0m[[0m[31merror[0m] [0m[0m      ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/Dimitris/git-repos/trip-pure-functional-service/src/main/scala/repository/DoobieTripRepository.scala:64:13: [0m
+[0m[[0m[31merror[0m] [0m[0mCannot find or construct a Read instance for type:[0m
+[0m[[0m[31merror[0m] [0m[0m[0m
+[0m[[0m[31merror[0m] [0m[0m  database.models.Trip[0m
+[0m[[0m[31merror[0m] [0m[0m[0m
+[0m[[0m[31merror[0m] [0m[0mThis can happen for a few reasons, but the most common case is that a data[0m
+[0m[[0m[31merror[0m] [0m[0mmember somewhere within this type doesn't have a Get instance in scope. Here are[0m
+[0m[[0m[31merror[0m] [0m[0msome debugging hints:[0m
+[0m[[0m[31merror[0m] [0m[0m[0m
+[0m[[0m[31merror[0m] [0m[0m- For Option types, ensure that a Read instance is in scope for the non-Option[0m
+[0m[[0m[31merror[0m] [0m[0m  version.[0m
+[0m[[0m[31merror[0m] [0m[0m- For types you expect to map to a single column ensure that a Get instance is[0m
+[0m[[0m[31merror[0m] [0m[0m  in scope.[0m
+[0m[[0m[31merror[0m] [0m[0m- For case classes, HLists, and shapeless records ensure that each element[0m
+[0m[[0m[31merror[0m] [0m[0m  has a Read instance in scope.[0m
+[0m[[0m[31merror[0m] [0m[0m- Lather, rinse, repeat, recursively until you find the problematic bit.[0m
+[0m[[0m[31merror[0m] [0m[0m[0m
+[0m[[0m[31merror[0m] [0m[0mYou can check that an instance exists for Read in the REPL or in your code:[0m
+[0m[[0m[31merror[0m] [0m[0m[0m
+[0m[[0m[31merror[0m] [0m[0m  scala> Read[Foo][0m
+[0m[[0m[31merror[0m] [0m[0m[0m
+[0m[[0m[31merror[0m] [0m[0mand similarly with Get:[0m
+[0m[[0m[31merror[0m] [0m[0m[0m
+[0m[[0m[31merror[0m] [0m[0m  scala> Get[Foo][0m
+[0m[[0m[31merror[0m] [0m[0m[0m
+[0m[[0m[31merror[0m] [0m[0mAnd find the missing instance and construct it as needed. Refer to Chapter 12[0m
+[0m[[0m[31merror[0m] [0m[0mof the book of doobie for more information.[0m
+[0m[[0m[31merror[0m] [0m[0m      .query[Trip][0m
+[0m[[0m[31merror[0m] [0m[0m            ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/Dimitris/git-repos/trip-pure-functional-service/src/main/scala/repository/DoobieTripRepository.scala:74:13: [0m
+[0m[[0m[31merror[0m] [0m[0mCannot find or construct a Read instance for type:[0m
+[0m[[0m[31merror[0m] [0m[0m[0m
+[0m[[0m[31merror[0m] [0m[0m  database.models.Trip[0m
+[0m[[0m[31merror[0m] [0m[0m[0m
+[0m[[0m[31merror[0m] [0m[0mThis can happen for a few reasons, but the most common case is that a data[0m
+[0m[[0m[31merror[0m] [0m[0mmember somewhere within this type doesn't have a Get instance in scope. Here are[0m
+[0m[[0m[31merror[0m] [0m[0msome debugging hints:[0m
+[0m[[0m[31merror[0m] [0m[0m[0m
+[0m[[0m[31merror[0m] [0m[0m- For Option types, ensure that a Read instance is in scope for the non-Option[0m
+[0m[[0m[31merror[0m] [0m[0m  version.[0m
+[0m[[0m[31merror[0m] [0m[0m- For types you expect to map to a single column ensure that a Get instance is[0m
+[0m[[0m[31merror[0m] [0m[0m  in scope.[0m
+[0m[[0m[31merror[0m] [0m[0m- For case classes, HLists, and shapeless records ensure that each element[0m
+[0m[[0m[31merror[0m] [0m[0m  has a Read instance in scope.[0m
+[0m[[0m[31merror[0m] [0m[0m- Lather, rinse, repeat, recursively until you find the problematic bit.[0m
+[0m[[0m[31merror[0m] [0m[0m[0m
+[0m[[0m[31merror[0m] [0m[0mYou can check that an instance exists for Read in the REPL or in your code:[0m
+[0m[[0m[31merror[0m] [0m[0m[0m
+[0m[[0m[31merror[0m] [0m[0m  scala> Read[Foo][0m
+[0m[[0m[31merror[0m] [0m[0m[0m
+[0m[[0m[31merror[0m] [0m[0mand similarly with Get:[0m
+[0m[[0m[31merror[0m] [0m[0m[0m
+[0m[[0m[31merror[0m] [0m[0m  scala> Get[Foo][0m
+[0m[[0m[31merror[0m] [0m[0m[0m
+[0m[[0m[31merror[0m] [0m[0mAnd find the missing instance and construct it as needed. Refer to Chapter 12[0m
+[0m[[0m[31merror[0m] [0m[0mof the book of doobie for more information.[0m
+[0m[[0m[31merror[0m] [0m[0m      .query[Trip][0m
+[0m[[0m[31merror[0m] [0m[0m            ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/Dimitris/git-repos/trip-pure-functional-service/src/main/scala/routes/QueryRoutes.scala:25:41: Cannot convert from Int to an Entity, because no EntityEncoder[F, Int] instance could be found.[0m
+[0m[[0m[31merror[0m] [0m[0m      trip.flatMap(_.fold(NotFound())(Ok(_)))[0m
+[0m[[0m[31merror[0m] [0m[0m                                        ^[0m
+[0m[[0m[31merror[0m] [0m[0m7 errors found[0m
